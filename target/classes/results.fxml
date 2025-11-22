@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ResultsController" 
+      alignment="CENTER" spacing="20" stylesheets="@results.css">
+    <padding>
+        <Insets top="50" right="50" bottom="50" left="50"/>
+    </padding>
+    
+    <Label fx:id="resultMessageLabel" text="" styleClass="title"/>
+    
+    <Label fx:id="gameAmountLabel" text="" styleClass="amount"/>
+    
+    <VBox fx:id="breakdownArea" spacing="10" alignment="CENTER"/>
+    
+    <HBox spacing="20" alignment="CENTER">
+        <Button fx:id="playAgainButton" text="Play Again" onAction="#handlePlayAgain"/>
+        <Button fx:id="exitButton" text="Exit" onAction="#handleExit"/>
+    </HBox>
+</VBox>

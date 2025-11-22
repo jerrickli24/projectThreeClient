@@ -1,0 +1,21 @@
+.title {
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2C3E50;
+}
+
+.status {
+    -fx-font-size: 14px;
+    -fx-text-fill: #E74C3C;
+}
+
+.button {
+    -fx-background-color: #27AE60;
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+}
+
+.button:hover {
+    -fx-background-color: #229954;
+}

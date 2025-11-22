@@ -1,0 +1,19 @@
+.title {
+    -fx-font-size: 36px;
+    -fx-font-weight: bold;
+}
+
+.amount {
+    -fx-font-size: 24px;
+}
+
+.button {
+    -fx-background-color: #9B59B6;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    -fx-padding: 10 30 10 30;
+}
+
+.button:hover {
+    -fx-background-color: #8E44AD;
+}

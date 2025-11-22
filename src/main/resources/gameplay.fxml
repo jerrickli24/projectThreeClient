@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="GamePlayController" 
+            stylesheets="@gameplay.css">
+    
+    <top>
+        <VBox>
+            <MenuBar fx:id="menuBar">
+                <Menu text="Options">
+                    <MenuItem text="Exit" onAction="#handleMenuExit"/>
+                    <MenuItem text="Fresh Start" onAction="#handleFreshStart"/>
+                    <MenuItem text="NewLook" onAction="#handleNewLook"/>
+                </Menu>
+            </MenuBar>
+            
+            <Label fx:id="totalWinningsLabel" text="Total Winnings: $0" styleClass="winnings"/>
+        </VBox>
+    </top>
+    
+    <center>
+        <VBox spacing="20" alignment="CENTER">
+            <padding>
+                <Insets top="20" right="20" bottom="20" left="20"/>
+            </padding>
+            
+            <Label text="Dealer's Hand" styleClass="subtitle"/>
+            <HBox spacing="10" alignment="CENTER">
+                <Label fx:id="dealerCard1Label" text="??" styleClass="card"/>
+                <Label fx:id="dealerCard2Label" text="??" styleClass="card"/>
+                <Label fx:id="dealerCard3Label" text="??" styleClass="card"/>
+            </HBox>
+            
+            <Label text="Your Hand" styleClass="subtitle"/>
+            <HBox spacing="10" alignment="CENTER">
+                <Label fx:id="playerCard1Label" text="" styleClass="card"/>
+                <Label fx:id="playerCard2Label" text="" styleClass="card"/>
+                <Label fx:id="playerCard3Label" text="" styleClass="card"/>
+            </HBox>
+            
+            <HBox spacing="20" alignment="CENTER">
+                <VBox spacing="5">
+                    <Label text="Ante Bet:"/>
+                    <TextField fx:id="anteField" prefWidth="100"/>
+                </VBox>
+                
+                <VBox spacing="5">
+                    <Label text="Pair Plus Bet:"/>
+                    <TextField fx:id="pairPlusField" prefWidth="100"/>
+                </VBox>
+            </HBox>
+            
+            <Label fx:id="playWagerLabel" text=""/>
+            
+            <HBox spacing="10" alignment="CENTER">
+                <Button fx:id="placeBetButton" text="Place Bets" onAction="#handlePlaceBets"/>
+                <Button fx:id="playButton" text="Play" onAction="#handlePlay"/>
+                <Button fx:id="foldButton" text="Fold" onAction="#handleFold"/>
+            </HBox>
+        </VBox>
+    </center>
+    
+    <bottom>
+        <VBox spacing="5">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Game Information:" styleClass="subtitle"/>
+            <TextArea fx:id="gameInfoArea" prefHeight="100" editable="false"/>
+        </VBox>
+    </bottom>
+</BorderPane>
