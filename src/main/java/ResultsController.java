@@ -29,25 +29,57 @@ public class ResultsController {
     
     public void displayResults(PokerInfo info) {
         // figure out how much won/lost this game
+        int anteResult = info.getAnteWinnings();
+        int pairPlusResult = info.getPairPlusWinnings();
+        int gameTotal = anteResult + pairPlusResult;
         
         // update total winnings
+        totalWinnings += gameTotal;
         
         // display if they won or lost
+        if(gameTotal > 0) {
+            resultMessageLabel.setText("You Won!");
+            resultMessageLabel.setStyle("-fx-text-fill: green;");
+        } else if(gameTotal < 0) {
+            resultMessageLabel.setText("You Lost");
+            resultMessageLabel.setStyle("-fx-text-fill: red;");
+        } else {
+            resultMessageLabel.setText("Push");
+            resultMessageLabel.setStyle("-fx-text-fill: orange;");
+        }
+        
+        gameAmountLabel.setText("This game: $" + gameTotal);
         
         // show breakdown of ante/play result and pair plus result
+        Label breakdownLabel = new Label();
+        String breakdownText = "Ante/Play Wager Result: $" + anteResult + "\n";
+        breakdownText += "Pair Plus Wager Result: $" + pairPlusResult + "\n";
+        breakdownText += "\n" + info.getMessageToClient() + "\n";
+        breakdownText += "\nTotal Winnings: $" + totalWinnings;
         
-        // show total winnings
+        breakdownLabel.setText(breakdownText);
+        breakdownLabel.setStyle("-fx-font-size: 16px;");
         
+        breakdownArea.getChildren().add(breakdownLabel);
     }
     
     @FXML
     public void handlePlayAgain() {
         try {
             // go back to gameplay screen
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gameplay.fxml"));
+            Parent root = loader.load();
             
             // need to pass the clientConnection to the new controller
+            GamePlayController gameController = loader.getController();
+            gameController.setClientConnection(clientConnection);
+            
+            Stage stage = ClientMain.getPrimaryStage();
+            Scene scene = new Scene(root, 900, 700);
+            stage.setScene(scene);
             
         } catch(Exception e) {
+            System.out.println("Error going back to game: " + e.getMessage());
             e.printStackTrace();
         }
     }
@@ -55,6 +87,9 @@ public class ResultsController {
     @FXML
     public void handleExit() {
         // close connection
+        clientConnection.closeConnection();
+        
         // exit program
+        Platform.exit();
     }
 }

@@ -21,8 +21,24 @@ public class Card implements Serializable {
     @Override
     public String toString() {
         // make a string like "AH" for ace of hearts or "5D" for 5 of diamonds
-        // need to convert 11, 12, 13, 14 to J, Q, K, A
+        String valueStr = "";
         
-        return null;
+        if(value == 14) {
+            valueStr = "A";
+        }
+        else if(value == 13) {
+            valueStr = "K";
+        }
+        else if(value == 12) {
+            valueStr = "Q";
+        }
+        else if(value == 11) {
+            valueStr = "J";
+        }
+        else {
+            valueStr = String.valueOf(value);
+        }
+        
+        return valueStr + suit;
     }
 }
